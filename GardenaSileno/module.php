@@ -35,7 +35,7 @@
         */
         public function DatenAktualisieren() {
             // Selbsterstellter Code
-            $uName = $this->ReadPropertyInteger("Username");
+            $uName = $this->ReadPropertyString("Username");
             echo ($uName);
         }
     }
