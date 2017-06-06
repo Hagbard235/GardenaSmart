@@ -33,7 +33,7 @@
         * ABC_MeineErsteEigeneFunktion($id);
         *
         */
-        public function MeineErsteEigeneFunktion() {
+        public function DatenAktualisieren() {
             // Selbsterstellter Code
         }
     }
