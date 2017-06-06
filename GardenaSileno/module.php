@@ -3,30 +3,32 @@
     class GardenaSileno extends IPSModule {
  
         // Der Konstruktor des Moduls
-        // Überschreibt den Standard Kontruktor von IPS
+        // Ãœberschreibt den Standard Kontruktor von IPS
         public function __construct($InstanceID) {
-            // Diese Zeile nicht löschen
+            // Diese Zeile nicht lÃ¶schen
             parent::__construct($InstanceID);
  
             // Selbsterstellter Code
         }
  
-        // Überschreibt die interne IPS_Create($id) Funktion
+        // Ãœberschreibt die interne IPS_Create($id) Funktion
         public function Create() {
-            // Diese Zeile nicht löschen.
+            // Diese Zeile nicht lÃ¶schen.
             parent::Create();
+            $this->RegisterPropertyString("Benutzername", "Mail-Adresse bei Gardena"); 
+            $this->RegisterPropertyString("Password", "Password"); 
  
         }
  
-        // Überschreibt die intere IPS_ApplyChanges($id) Funktion
+        // Ãœberschreibt die intere IPS_ApplyChanges($id) Funktion
         public function ApplyChanges() {
-            // Diese Zeile nicht löschen
+            // Diese Zeile nicht lÃ¶schen
             parent::ApplyChanges();
         }
  
         /**
-        * Die folgenden Funktionen stehen automatisch zur Verfügung, wenn das Modul über die "Module Control" eingefügt wurden.
-        * Die Funktionen werden, mit dem selbst eingerichteten Prefix, in PHP und JSON-RPC wiefolgt zur Verfügung gestellt:
+        * Die folgenden Funktionen stehen automatisch zur VerfÃ¼gung, wenn das Modul Ã¼ber die "Module Control" eingefÃ¼gt wurden.
+        * Die Funktionen werden, mit dem selbst eingerichteten Prefix, in PHP und JSON-RPC wiefolgt zur VerfÃ¼gung gestellt:
         *
         * ABC_MeineErsteEigeneFunktion($id);
         *
