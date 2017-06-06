@@ -1,12 +1,12 @@
 {
-"id": "{F96B257F-85E7-47CF-8340-8FE850AACD10}",
-"author": "UltimateSoftware",
-"name": "Gardena Smart",
-"url": "www.ultimatesoftware.de",
-"compatibility": {
-    "version": "4.2"
-}
-"version": "1.0",
-"build": 0,
-"date": 0
+	"id": "{F96B257F-85E7-47CF-8340-8FE850AACD10}",
+	"author": "Symcon GmbH",
+	"name": "Misc Modules",
+	"url": "www.ip-symcon.de",
+	"compatibility": {
+		"version": "4.2"
+	},
+	"version": "1.0",
+	"build": 0,
+	"date": 0
 }
