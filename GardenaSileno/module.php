@@ -15,7 +15,7 @@
         public function Create() {
             // Diese Zeile nicht löschen.
             parent::Create();
-            $this->RegisterPropertyString("Benutzername", "Mail-Adresse bei Gardena"); 
+            $this->RegisterPropertyString("Username", "Mail-Adresse bei Gardena"); 
             $this->RegisterPropertyString("Password", "Password"); 
  
         }
