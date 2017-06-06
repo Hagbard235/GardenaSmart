@@ -1,0 +1,15 @@
+{
+    "id": "{7a02fb49-35a2-4762-953c-44cedf58f2ad}",
+    "name": "Gardena Sileno Module",
+    "type": 3,
+    "vendor": "Gardena Sileno",
+    "aliases":
+    [
+        "Gardena Sileno+",
+        "Gardena Mower"
+    ],  
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "GAR"
+}

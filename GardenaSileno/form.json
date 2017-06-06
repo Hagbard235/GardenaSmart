@@ -1,0 +1,18 @@
+{
+    "elements":
+    [
+        { "type": "ValidationTextBox", "name": "Username", "caption": "Username" },
+        { "type": "ValidationTextBox", "name": "Password", "caption": "Password" }
+        
+    ],
+    "actions":
+    [
+        { "type": "Button", "label": "Send Message", "onClick": "SMS_Send($id, $Number, $Message);" }
+    ],
+    "status":
+    [
+        { "code": 102, "icon": "active", "caption": "Login information valid" },
+        { "code": 201, "icon": "error", "caption": "Authentication failed" },
+        { "code": 202, "icon": "error", "caption": "No credits left" }
+    ]
+}
