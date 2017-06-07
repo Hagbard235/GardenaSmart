@@ -37,7 +37,7 @@
         * ABC_MeineErsteEigeneFunktion($id);
         *
         */
-        public function DatenAktualisieren() {
+        public function HerstellerInfoAktualisieren() {
             // Selbsterstellter Code
 			    $username = $this->ReadPropertyString("Username");
 				$password = $this->ReadPropertyString("Password");
@@ -49,6 +49,20 @@
 				$proberty_name = "manufacturer";
 				$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
 				echo( $status);
+				$vname = "Hersteller";
+				$O_ID = intval(IPS_GetObject(IPS_GetParent($_IPS['SELF'])));
+				$varID = @IPS_GetObjectIDByName($vname, $O_ID);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+
+				}
+				else {
+				$VarID_NEU = IPS_CreateVariable(3);
+				IPS_SetName($VarID_NEU, "Hersteller");
+				IPS_SetParent($VarID_NEU,IPS_GetParent($_IPS['SELF']));
+				SetValue($VarID_NEU, $status);
+				}
+
         }
 		
 		 
