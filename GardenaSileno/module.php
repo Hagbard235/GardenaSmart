@@ -47,7 +47,7 @@
 				
 				}
 				
-				$this->RegisterTimer("Update", 300000, "echo 'test';");
+				//$this->RegisterTimer("Update", 300000, "echo 'test';");
 				//GAR_AktuellerGeraeteStatusAktualisieren($_IPS['TARGET']);
  
         }
