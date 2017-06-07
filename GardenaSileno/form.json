@@ -7,10 +7,10 @@
         { "type": "IntervalBox", "name": "Interval", "caption": "Minuten" }
         
     ],
-    "actions":
-    [
-        { "type": "Button", "label": "Verbindung testen", "onClick": "GAR_CheckUsernameUndPassword($_IPS[\'TARGET\']);" }
-    ],
+   // "actions":
+    //[
+    //    { "type": "Button", "label": "Verbindung testen", "onClick": "GAR_CheckUsernameUndPassword($_IPS[\'TARGET\']);" }
+    //],
     "status":
     [
         { "code": 102, "icon": "active", "caption": "Login information valid" },
