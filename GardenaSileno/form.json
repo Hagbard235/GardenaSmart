@@ -9,7 +9,7 @@
     ],
     "actions":
     [
-        { "type": "Button", "label": "Verbindung testen", "onClick": "CheckUsernameUndPassword();" }
+        { "type": "Button", "label": "Verbindung testen", "onClick": "$this->CheckUsernameUndPassword();" }
     ],
     "status":
     [
