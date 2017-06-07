@@ -48,20 +48,108 @@
 				$category_name = "device_info";
 				$proberty_name = "manufacturer";
 				$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-				//echo( $status);
-				//$vname = "Hersteller";
-				//$O_ID = intval(IPS_GetObject(IPS_GetParent($_IPS['SELF'])));
-				$varID = @$this->GetIDForIdent("Hersteller");
+			
+				$varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
 					SetValue($varID, $status);
-					echo ("gesetzt");
+			
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString("Hersteller","Hersteller");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Hersteller");
 				SetValue($VarID_NEU, $status);
-				echo ("angelegtr und gesetzt");
+				
 				}
+				
+				
+
+    $proberty_name = "product";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+			
+				$varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Produktname");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "serial_number";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+			
+				$varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Serien-Nummer");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "version";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+			
+				$varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Version");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "category";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+			
+				$varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Kategorie");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "last_time_online";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+			
+				$varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"letzte Onlinezeit");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "sgtin";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+			
+				$varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"sgtin");
+				SetValue($VarID_NEU, $status);
+				
+				}
+				
+				
+				
+				
 
         }
 		
