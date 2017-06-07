@@ -60,7 +60,7 @@
 				else {
 				$VarID_NEU = IPS_CreateVariable(3);
 				IPS_SetName($VarID_NEU, "Hersteller");
-				IPS_SetParent($VarID_NEU,IPS_GetParent($_IPS['SELF']));
+				IPS_SetParent($VarID_NEU,$_IPS['SELF']);
 				SetValue($VarID_NEU, $status);
 				echo ("angelegtr und gesetzt");
 				}
