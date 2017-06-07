@@ -52,9 +52,9 @@ class gardena
             'Content-Length: ' . strlen($data_string))
         );
         $result = curl_exec($ch);
-		echo($result);
+		//echo($result);
         $data = json_decode($result);
-		echo($data);
+		//echo($data);
         $this -> token = $data -> sessions -> token;
         $this -> user_id = $data -> sessions -> user_id;
         $this -> loadLocations();
