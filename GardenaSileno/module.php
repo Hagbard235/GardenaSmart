@@ -48,7 +48,7 @@
 				
 				}
 				$doThis = 'GAR_AktuellerGeraeteStatusAktualisieren($_IPS[\'TARGET\']);';
-				$interv = ReadPropertyInteger("Interval")*60000;
+				$interv = $this->ReadPropertyInteger("Interval")*60000;
 				$this->RegisterTimer("Update", $interv, $doThis);
 				
  
