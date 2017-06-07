@@ -9,7 +9,7 @@
     ],
     "actions":
     [
-        { "type": "Button", "label": "Verbindung testen", "onClick": "$this->CheckUsernameUndPassword();" }
+        { "type": "Button", "label": "Verbindung testen", "onClick": "GAR_CheckUsernameUndPassword($_IPS[\'TARGET\']);" }
     ],
     "status":
     [
