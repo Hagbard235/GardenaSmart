@@ -46,6 +46,8 @@
 				
 				
 				}
+				
+				$this->RegisterTimer("Update", 300000, "$this->AktuellerGeraeteStatusAktualisieren();");
  
         }
 		
@@ -82,6 +84,7 @@
             parent::ApplyChanges();
 			//Instanz ist aktiv
 			$this->SetStatus(102);
+			$this->AlleInfosAktualisieren();
         }
  
         /**
