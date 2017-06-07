@@ -58,7 +58,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString("Hersteller","H");
+				$VarID_NEU = $this->RegisterVariableString("Hersteller","Hersteller");
 				SetValue($VarID_NEU, $status);
 				echo ("angelegtr und gesetzt");
 				}
