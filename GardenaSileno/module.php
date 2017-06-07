@@ -41,19 +41,20 @@
             // Selbsterstellter Code
 			    $username = $this->ReadPropertyString("Username");
 				$password = $this->ReadPropertyString("Password");
-				echo ($username);
-				echo ($password);
+				//echo ($username);
+				//echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 				$category_name = "device_info";
 				$proberty_name = "manufacturer";
 				$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-				echo( $status);
+				//echo( $status);
 				$vname = "Hersteller";
 				$O_ID = intval(IPS_GetObject(IPS_GetParent($_IPS['SELF'])));
 				$varID = @IPS_GetObjectIDByName($vname, $O_ID);
 				if (IPS_VariableExists($varID)) {
 					SetValue($varID, $status);
+					echo ("gesetzt");
 
 				}
 				else {
@@ -61,6 +62,7 @@
 				IPS_SetName($VarID_NEU, "Hersteller");
 				IPS_SetParent($VarID_NEU,IPS_GetParent($_IPS['SELF']));
 				SetValue($VarID_NEU, $status);
+				echo ("angelegtr und gesetzt");
 				}
 
         }
