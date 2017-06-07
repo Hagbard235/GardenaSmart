@@ -51,7 +51,7 @@
 				//echo( $status);
 				//$vname = "Hersteller";
 				//$O_ID = intval(IPS_GetObject(IPS_GetParent($_IPS['SELF'])));
-				$varID = GetIDForIdent("Hersteller")
+				$varID = GetIDForIdent("Hersteller");
 				if (IPS_VariableExists($varID)) {
 					SetValue($varID, $status);
 					echo ("gesetzt");
