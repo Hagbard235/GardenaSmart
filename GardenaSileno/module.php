@@ -31,9 +31,20 @@
 			IPS_SetVariableProfileAssociation($profilename, 4, "Start für 24 Stunden", "", 0xFFFF00);
 			IPS_SetVariableProfileAssociation($profilename, 5, "Start für 3 Tage", "", 0xFFFF00);
 			
-	
-	}
+		}
+				$proberty_name = "action";
+				$varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					
+			
 
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Aktion");
+				IPS_SetVariableCustomProfile($VarID_Neu, "GAR.Befehle" );
+				
+				
+				}
  
         }
  
