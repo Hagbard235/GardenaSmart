@@ -1,7 +1,7 @@
 <?
     // Klassendefinition
     class GardenaSileno extends IPSModule {
- 
+     include("php_gardena_mover_class.ips.php");
     var $user_id, $token, $locations;
     var $devices = array();
 
@@ -67,140 +67,16 @@
         */
         public function DatenAktualisieren() {
             // Selbsterstellter Code
-            $uName = $this->ReadPropertyString("Username");
-            echo ($uName);
-			//Instanz ist aktiv
-			$this->SetStatus(202);
+            $uName = ;
+			    $gardena = new gardena($this->ReadPropertyString("Username"), $this->ReadPropertyString("Password"));
+				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+				$category_name = "device_info";
+				$proberty_name = "manufacturer";
+				$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+				echo($id_device_manufaktur, $status);
         }
 		
-		 function gardena()
-    {
-		$user = $this->ReadPropertyString("Username");
-		$pw = $this->ReadPropertyString("Password");
-        $data = array(
-            "sessions" => array(
-                "email" => "$user", "password" => "$pw")
-            );
-        $data_string = json_encode($data);
-        $ch = curl_init(self::LOGINURL);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type:application/json',
-            'Content-Length: ' . strlen($data_string))
-        );
-        $result = curl_exec($ch);
-        $data = json_decode($result);
-        $this -> token = $data -> sessions -> token;
-        $this -> user_id = $data -> sessions -> user_id;
-        $this -> loadLocations();
-        $this -> loadDevices();
-    }
-	
-	// -----------------------------------------------------------------------------
-    function loadLocations()
-    {
-        $url = self::LOCATIONSURL . $this -> user_id;
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type:application/json',
-            'X-Session:' . $this -> token)
-        );
-        $this -> locations = json_decode(curl_exec($ch)) -> locations;  
-	    echo ($this->locations);
-    }
-// -----------------------------------------------------------------------------
-    function loadDevices()
-    {
-        foreach($this->locations as $location)
-        {
-            $url = self::DEVICESURL . $location -> id;
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type:application/json',
-                'X-Session:' . $this -> token)
-            );
-            $this -> devices[$location -> id] = json_decode(curl_exec($ch)) -> devices;
-			echo($this->devices);
-        }
-    }
-// -----------------------------------------------------------------------------
-    /*
-    * Finds the first occurrence of a certain category type.
-    * Example: You want to find your only mower, having one or more gardens. 
-    * @param constant $category
-    */
-    function getFirstDeviceOfCategory($category)
-    {
-        foreach($this -> devices as $locationId => $devices)
-        {
-            foreach($devices as $device)
-                if ($device -> category == $category)
-                    return $device;
-        }
-    }
-// -----------------------------------------------------------------------------
-    function getDeviceLocation($device)
-    {
-        foreach($this -> locations as $location)
-            foreach($location -> devices as $d)
-                if ($d == $device -> id)
-                    return $location;
-    }
-// -----------------------------------------------------------------------------
-    function sendCommand($device, $command)
-    {
-        $location = $this -> getDeviceLocation($device);
-        $url = str_replace("|DEVICEID|", $device -> id, self::CMDURL) . $location -> id;
-        $data_string = json_encode($command);
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type:application/json',
-            'X-Session:' . $this -> token,
-            'Content-Length: ' . strlen($data_string)
-            ));  
-        $result =  curl_exec($ch);        
-        if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == "204") //success
-            return true;
-        return json_encode($result);
-    }
-// -----------------------------------------------------------------------------
-    function getMowerState($device)
-    {
-        foreach ($device -> abilities as $ability)
-            if ($ability -> name == self::CATEGORY_MOWER)
-                foreach($ability -> properties as $property)
-                    if ($property -> name == self::PROPERTY_STATUS)
-                        return $property -> value;
-    }
-// =============================================================================
-    function getInfo($device, $category_name, $proberty_name)
-    {
-        foreach ($device -> abilities as $ability)
-            if ($ability -> name == $category_name)
-                foreach($ability -> properties as $property)
-                    if ($property -> name == $proberty_name)
-                        return $property -> value;
-    }
-// =============================================================================
-    function getDeviceStatusReportFriendly($device)
-    {
-        $result = "";
-        foreach ($device -> status_report_history as $entry)
-        {
-            $result .= $entry -> timestamp . " | " . $entry -> source . " | " . $entry -> message . "<br>";
-        }
-        return $result;
-    }
-	
+		 
 	
     }
 ?>
