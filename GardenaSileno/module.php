@@ -38,9 +38,9 @@
         *
         */
         public function AlleInfosAktualisieren() {
-            GeraeteInfosAktualisieren();
-			BatterieInfosAktualisieren();
-			FunkInfosAktualisieren();
+            $this->GeraeteInfosAktualisieren();
+			$this->BatterieInfosAktualisieren();
+			$this->FunkInfosAktualisieren();
 				
 
         }
