@@ -2,7 +2,9 @@
     "elements":
     [
         { "type": "ValidationTextBox", "name": "Username", "caption": "Username" },
-        { "type": "ValidationTextBox", "name": "Password", "caption": "Password" }
+        { "type": "ValidationTextBox", "name": "Password", "caption": "Password" },
+		{ "type": "Label", "label": "Refresh-Zeit für Status in Minuten" },
+        { "type": "IntervalBox", "name": "Interval", "caption": "Minuten" }
         
     ],
     "actions":

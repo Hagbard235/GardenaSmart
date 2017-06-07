@@ -19,6 +19,7 @@
             parent::Create();
             $this->RegisterPropertyString("Username", "Mail-Adresse bei Gardena"); 
             $this->RegisterPropertyString("Password", "Password"); 
+			$this->RegisterPropertyInteger("Interval",5); 
 			
 			//Variablenprofil anlegen ($name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon)
 		$profilename = "GAR.Befehle";
@@ -47,7 +48,8 @@
 				
 				}
 				$doThis = 'GAR_AktuellerGeraeteStatusAktualisieren($_IPS[\'TARGET\']);';
-				$this->RegisterTimer("Update", 300000, $doThis);
+				$interv = ReadPropertyInteger("Interval")*60000;
+				$this->RegisterTimer("Update", $interv, $doThis);
 				
  
         }
@@ -88,6 +90,7 @@
 			
 			if ($this->ReadPropertyString("Password") !== "Password") {
 			$this->AlleInfosAktualisieren();
+			$this->SetTimerInterval("Update", $this->ReadPropertyInteger("Interval")*60000);
 			}
         }
  
