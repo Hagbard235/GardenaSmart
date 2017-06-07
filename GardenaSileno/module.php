@@ -159,7 +159,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Batterie-Level");
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Batterie-Level");
 				 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
 				
 				SetValue($VarID_NEU, $status);
@@ -187,7 +187,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Ladestatus");
+				$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,"Ladestatus");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -202,7 +202,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Funk-Qualität");
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Funk-Stärke");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -230,7 +230,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Verbindungs-Qualität");
 				SetValue($VarID_NEU, $status);
 				
 				}
