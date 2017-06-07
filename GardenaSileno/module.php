@@ -86,7 +86,7 @@
 			//Instanz ist aktiv
 			$this->SetStatus(102);
 			
-			if ($this.ReadPropertyString("Password") !== "Password") {}
+			if ($this.ReadPropertyString("Password") !== "Password") {
 			$this->AlleInfosAktualisieren();
 			}
         }
