@@ -53,6 +53,7 @@ class gardena
         );
         $result = curl_exec($ch);
         $data = json_decode($result);
+		echo($data);
         $this -> token = $data -> sessions -> token;
         $this -> user_id = $data -> sessions -> user_id;
         $this -> loadLocations();
