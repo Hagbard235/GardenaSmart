@@ -191,8 +191,49 @@
 				SetValue($VarID_NEU, $status);
 				
 				}
+				   $category_name = "radio";
+				   
+				 $proberty_name = "quality";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Funk-Qualität");
+				SetValue($VarID_NEU, $status);
 				
+				}
+
+    $proberty_name = "connection_status";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Verbindungs-Status");
+				SetValue($VarID_NEU, $status);
 				
+				}
+
+    $proberty_name = "state";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status");
+				SetValue($VarID_NEU, $status);
+				
+				}
 				
 
         }
