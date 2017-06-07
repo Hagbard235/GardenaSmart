@@ -56,7 +56,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Hersteller");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Hersteller");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -72,7 +72,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Produktname");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Produktname");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -86,7 +86,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Serien-Nummer");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Serien-Nummer");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -100,7 +100,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Version");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Version");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -114,7 +114,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Kategorie");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Kategorie");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -128,7 +128,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"letzte Onlinezeit");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_letzte Onlinezeit");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -142,7 +142,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"sgtin");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_sgtin");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -159,7 +159,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Batterie-Level");
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Batterie_Level");
 				 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
 				
 				SetValue($VarID_NEU, $status);
@@ -174,7 +174,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Batterie-Status");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Batterie_Status");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -187,7 +187,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,"Ladestatus");
+				$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,"Batterie_Ladestatus");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -202,7 +202,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Funk-Stärke");
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Funk_Stärke");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -216,7 +216,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Verbindungs-Status");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Funk_Status");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -230,7 +230,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Verbindungs-Qualität");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Funk_Qualität");
 				SetValue($VarID_NEU, $status);
 				
 				}
