@@ -19,6 +19,21 @@
             parent::Create();
             $this->RegisterPropertyString("Username", "Mail-Adresse bei Gardena"); 
             $this->RegisterPropertyString("Password", "Password"); 
+			
+			//Variablenprofil anlegen ($name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon)
+		$profilename = "GAR.Befehle";
+		if (!IPS_VariableProfileExists($profilename)) {
+			IPS_CreateVariableProfile($profilename, 1);
+			IPS_SetVariableProfileIcon($profilename, "Flower");
+			IPS_SetVariableProfileAssociation($profilename, 1, "bis auf weiteres parken", "", 0xFFFF00);
+			IPS_SetVariableProfileAssociation($profilename, 2, "parken bis zum nächsten Timer", "", 0xFFFF00);
+			IPS_SetVariableProfileAssociation($profilename, 3, "Start/Wiederaufname Timer", "", 0xFFFF00);
+			IPS_SetVariableProfileAssociation($profilename, 4, "Start für 24 Stunden", "", 0xFFFF00);
+			IPS_SetVariableProfileAssociation($profilename, 5, "Start für 3 Tage", "", 0xFFFF00);
+			
+	
+	}
+
  
         }
  
@@ -370,8 +385,37 @@
 				}
 			
         }
-		 
-		 
+			public function AktionAusfuehren($action) {
+      
+	$gardena = new gardena($pw_user_maeher, $pw_pawo_maeher);
+    $mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+
+    
+        {
+            
+            $switch = $action;
+            switch ($switch)
+            {
+            // Parken ----------------------------------------------------------
+            case 1:
+                $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_PARK_UNTIL_FURTHER_NOTICE);
+                break;
+            case 2:
+                $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_PARK_UNTIL_NEXT_TIMER);
+                break;
+            // Mähen -----------------------------------------------------------
+            case 3:
+                $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_RESUME_SCHEDULE);
+                break;
+            case 4:
+                $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_24HOURS);
+                break;
+            case 5:
+                $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_3DAYS);
+                break;
+            }
+        
+			}		
 	
     }
 ?>
