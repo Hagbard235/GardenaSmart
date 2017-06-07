@@ -39,7 +39,7 @@
         */
         public function AlleInfosAktualisieren() {
             $this->GeraeteInfosAktualisieren();
-			$this->TemperaturInfosAktualisieren();
+			$this->AktuellerGeraeteStatusAktualisieren();
 			$this->BatterieInfosAktualisieren();
 			$this->FunkInfosAktualisieren();
 
@@ -271,7 +271,7 @@
 				
 
         }
-		public function TemperaturInfosAktualisieren() {
+		public function AktuellerGeraeteStatusAktualisieren() {
             // Selbsterstellter Code
 			    $username = $this->ReadPropertyString("Username");
 				$password = $this->ReadPropertyString("Password");
@@ -297,7 +297,77 @@
 				SetValue($VarID_NEU, $status);
 				
 				}
+  $category_name = "mower";
+				
+				$proberty_name = "manual_operation";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
 
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_manuelle Operation");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "status";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_aktuelle Aktion");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "source_for_next_start";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_Grund für nächsten Start");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "timestamp_next_start";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_Uhrzeit nächster Start");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "override_end_time";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_Überschriebene Endzeit");
+				SetValue($VarID_NEU, $status);
+				
+				}
 			
         }
 		 
