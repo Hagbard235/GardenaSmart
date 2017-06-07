@@ -49,18 +49,16 @@
 				$proberty_name = "manufacturer";
 				$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
 				//echo( $status);
-				$vname = "Hersteller";
-				$O_ID = intval(IPS_GetObject(IPS_GetParent($_IPS['SELF'])));
-				$varID = @IPS_GetObjectIDByName($vname, $O_ID);
+				//$vname = "Hersteller";
+				//$O_ID = intval(IPS_GetObject(IPS_GetParent($_IPS['SELF'])));
+				$varID = GetIDForIdent("Hersteller")
 				if (IPS_VariableExists($varID)) {
 					SetValue($varID, $status);
 					echo ("gesetzt");
 
 				}
 				else {
-				$VarID_NEU = IPS_CreateVariable(3);
-				IPS_SetName($VarID_NEU, "Hersteller");
-				IPS_SetParent($VarID_NEU,$_IPS['SELF']);
+				$VarID_NEU = $this->RegisterVariableString("Hersteller");
 				SetValue($VarID_NEU, $status);
 				echo ("angelegtr und gesetzt");
 				}
