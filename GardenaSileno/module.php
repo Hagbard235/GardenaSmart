@@ -39,8 +39,9 @@
         */
         public function DatenAktualisieren() {
             // Selbsterstellter Code
-            
-			    $gardena = new gardena($this->ReadPropertyString("Username"), $this->ReadPropertyString("Password"));
+			    $username = $this->ReadPropertyString("Username");
+				$password = $this->ReadPropertyString("Password");
+			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 				$category_name = "device_info";
 				$proberty_name = "manufacturer";
