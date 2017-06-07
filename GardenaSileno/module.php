@@ -40,7 +40,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Aktion");
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Aktion");
 				IPS_SetVariableCustomProfile($VarID_NEU, "GAR.Befehle" );
 				
 				
