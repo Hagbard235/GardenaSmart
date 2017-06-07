@@ -52,6 +52,7 @@ class gardena
             'Content-Length: ' . strlen($data_string))
         );
         $result = curl_exec($ch);
+		echo($result);
         $data = json_decode($result);
 		echo($data);
         $this -> token = $data -> sessions -> token;
