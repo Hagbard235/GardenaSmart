@@ -68,7 +68,7 @@
 				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_PARK_UNTIL_NEXT_TIMER);
 				break;
 			case "3":
-				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_RESUME_SCHEDUL);
+				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_RESUME_SCHEDULE);
 				break;
 			case "4":
 				  $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_24HOURS);
