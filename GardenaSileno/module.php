@@ -45,7 +45,7 @@
 				$category_name = "device_info";
 				$proberty_name = "manufacturer";
 				$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-				echo($id_device_manufaktur ."#" . $status);
+				echo( $status);
         }
 		
 		 
