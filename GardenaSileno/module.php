@@ -41,6 +41,7 @@
 				}
 				else {
 				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Aktion","GAR.Befehle",0);
+				$this->EnableAction($proberty_name);
 		
 				
 				
