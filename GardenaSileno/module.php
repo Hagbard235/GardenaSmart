@@ -37,7 +37,14 @@
         * ABC_MeineErsteEigeneFunktion($id);
         *
         */
-        public function HerstellerInfoAktualisieren() {
+        public function AlleInfosAktualisieren() {
+            GeraeteInfosAktualisieren();
+			BatterieInfosAktualisieren();
+			FunkInfosAktualisieren();
+				
+
+        }
+		public function GeraeteInfosAktualisieren() {
             // Selbsterstellter Code
 			    $username = $this->ReadPropertyString("Username");
 				$password = $this->ReadPropertyString("Password");
@@ -148,7 +155,19 @@
 				}
 				
 				
+
+        }
+		
+		public function BatterieInfosAktualisieren() {
+            // Selbsterstellter Code
+			    $username = $this->ReadPropertyString("Username");
+				$password = $this->ReadPropertyString("Password");
+				//echo ($username);
+				//echo ($password);
+			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+				
+				
 				$category_name = "battery";
 				
   $proberty_name = "level";$varID = @$this->GetIDForIdent($proberty_name);
@@ -191,6 +210,19 @@
 				SetValue($VarID_NEU, $status);
 				
 				}
+				   
+				
+
+        }
+		public function FunkInfosAktualisieren() {
+            // Selbsterstellter Code
+			    $username = $this->ReadPropertyString("Username");
+				$password = $this->ReadPropertyString("Password");
+				//echo ($username);
+				//echo ($password);
+			    $gardena = new gardena($username, $password );
+				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+				
 				   $category_name = "radio";
 				   
 				 $proberty_name = "quality";
@@ -237,6 +269,7 @@
 				
 
         }
+		
 		
 		 
 	
