@@ -308,7 +308,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_manuelle Operation");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_manuelle Operation");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -322,7 +322,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_aktuelle Aktion");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_aktuelle Aktion");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -336,7 +336,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_Grund für nächsten Start");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Grund für nächsten Start");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -350,7 +350,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_Uhrzeit nächster Start");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Uhrzeit nächster Start");
 				SetValue($VarID_NEU, $status);
 				
 				}
@@ -364,7 +364,7 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Status_Überschriebene Endzeit");
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Überschriebene Endzeit");
 				SetValue($VarID_NEU, $status);
 				
 				}
