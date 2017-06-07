@@ -1,36 +1,8 @@
 <?
+     include("php_gardena_mover_class.ips.php");
     // Klassendefinition
     class GardenaSileno extends IPSModule {
-     include("php_gardena_mover_class.ips.php");
-    var $user_id, $token, $locations;
-    var $devices = array();
 
-    const LOGINURL        = "https://sg-api.dss.husqvarnagroup.net/sg-1/sessions";
-    const LOCATIONSURL    = "https://sg-api.dss.husqvarnagroup.net/sg-1/locations/?user_id=";
-    const DEVICESURL    = "https://sg-api.dss.husqvarnagroup.net/sg-1/devices?locationId=";
-    const CMDURL        = "https://sg-api.dss.husqvarnagroup.net/sg-1/devices/|DEVICEID|/abilities/mower/command?locationId=";
-
-    var $CMD_MOWER_PARK_UNTIL_NEXT_TIMER        = array("name" => "park_until_next_timer");
-    var $CMD_MOWER_PARK_UNTIL_FURTHER_NOTICE    = array("name" => "park_until_further_notice");
-    var $CMD_MOWER_START_RESUME_SCHEDULE        = array("name" => "start_resume_schedule");
-    var $CMD_MOWER_START_24HOURS                = array("name" => "start_override_timer", "parameters" => array("duration" => 1440));
-    var $CMD_MOWER_START_3DAYS                    = array("name" => "start_override_timer", "parameters" => array("duration" => 4320));
-// -----------------------------------------------------------------------------
-    // Gateway
-    const CATEGORY_DEVICE_INFO        = "device_info";
-    const CATEGORY_GATEWAY            = "gateway";
-    // Mover Device Info
-    const CATEGORY_DEVICE            = "device_info";
-    // Mover Akkuzustand
-    const CATEGORY_BATTERY            = "battery";
-    // Mover Radio - Funksignal
-    const CATEGORY_RADIO            = "radio";
-    // Mover Mäherstatus
-    const CATEGORY_MOWER            = "mower";
-    const PROPERTY_STATUS            = "status";
-    // Mover Temperatur
-    const CATEGORY_TEMPERATUR        = "internal_temperature";
- 
  
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS
