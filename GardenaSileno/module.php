@@ -148,6 +148,50 @@
 				}
 				
 				
+				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+				$category_name = "battery";
+				
+  $proberty_name = "level";$varID = @$this->GetIDForIdent($proberty_name);
+   $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Batterie-Level");
+				 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+				
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "rechargable_battery_status";$varID = @$this->GetIDForIdent($proberty_name);
+	 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Batterie-Status");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+    $proberty_name = "charging";$varID = @$this->GetIDForIdent($proberty_name);
+	 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Ladestatus");
+				SetValue($VarID_NEU, $status);
+				
+				}
+				
 				
 				
 
