@@ -47,7 +47,7 @@
 				
 				}
 				
-				//$this->RegisterTimer("Update", 300000, "echo 'test';");
+				$this->RegisterTimer("Update", 300000, "echo 'test';");
 				//GAR_AktuellerGeraeteStatusAktualisieren($_IPS['TARGET']);
  
         }
@@ -85,7 +85,7 @@
             parent::ApplyChanges();
 			//Instanz ist aktiv
 			$this->SetStatus(102);
-			$this->AlleInfosAktualisieren();
+			//$this->AlleInfosAktualisieren();
         }
  
         /**
