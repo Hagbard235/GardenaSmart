@@ -40,13 +40,40 @@
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Aktion");
-				IPS_SetVariableCustomProfile($VarID_NEU, "GAR.Befehle" );
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Aktion","GAR.Befehle",0);
+		
 				
 				
 				}
  
         }
+		
+		public function RequestAction($Ident, $Value) {
+		  $username = $this->ReadPropertyString("Username");
+				$password = $this->ReadPropertyString("Password");
+			    $gardena = new gardena($username, $password );
+		  $mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+
+		switch($Value) {
+			case "1":
+				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_PARK_UNTIL_FURTHER_NOTICE);
+				break;
+			case "2":
+				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_PARK_UNTIL_NEXT_TIMER);
+				break;
+			case "3":
+				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_RESUME_SCHEDUL);
+				break;
+			case "4":
+				  $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_24HOURS);
+				break;
+			case "5":
+				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_3DAYS);
+				break;
+			default:
+				throw new Exception("Invalid action");
+		}
+	}
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
         public function ApplyChanges() {
