@@ -24,6 +24,8 @@
         public function ApplyChanges() {
             // Diese Zeile nicht löschen
             parent::ApplyChanges();
+			//Instanz ist aktiv
+			$this->SetStatus(102);
         }
  
         /**
@@ -37,6 +39,8 @@
             // Selbsterstellter Code
             $uName = $this->ReadPropertyString("Username");
             echo ($uName);
+			//Instanz ist aktiv
+			$this->SetStatus(202);
         }
     }
 ?>
