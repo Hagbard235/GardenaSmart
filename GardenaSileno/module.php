@@ -44,7 +44,7 @@
 				
 
         }
-		public function GeraeteInfosAktualisieren() {
+		 function GeraeteInfosAktualisieren() {
             // Selbsterstellter Code
 			    $username = $this->ReadPropertyString("Username");
 				$password = $this->ReadPropertyString("Password");
