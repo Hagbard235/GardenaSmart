@@ -9,7 +9,7 @@
     ],
     "actions":
     [
-        { "type": "Button", "label": "Send Message", "onClick": "CheckUsernameUndPassword();" }
+        { "type": "Button", "label": "Verbindung testen", "onClick": "CheckUsernameUndPassword();" }
     ],
     "status":
     [
