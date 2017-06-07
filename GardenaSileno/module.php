@@ -51,14 +51,14 @@
 				//echo( $status);
 				//$vname = "Hersteller";
 				//$O_ID = intval(IPS_GetObject(IPS_GetParent($_IPS['SELF'])));
-				$varID = $this->GetIDForIdent("Hersteller");
+				$varID = @$this->GetIDForIdent("Hersteller");
 				if (IPS_VariableExists($varID)) {
 					SetValue($varID, $status);
 					echo ("gesetzt");
 
 				}
 				else {
-				$VarID_NEU = $this->RegisterVariableString("Hersteller");
+				$VarID_NEU = $this->RegisterVariableString("Hersteller","H");
 				SetValue($VarID_NEU, $status);
 				echo ("angelegtr und gesetzt");
 				}
