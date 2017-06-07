@@ -85,7 +85,10 @@
             parent::ApplyChanges();
 			//Instanz ist aktiv
 			$this->SetStatus(102);
-			//$this->AlleInfosAktualisieren();
+			
+			if ($this.ReadPropertyString("Password") !== "Password") {}
+			$this->AlleInfosAktualisieren();
+			}
         }
  
         /**
