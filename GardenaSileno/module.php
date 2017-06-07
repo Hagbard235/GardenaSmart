@@ -39,12 +39,14 @@
         */
         public function AlleInfosAktualisieren() {
             $this->GeraeteInfosAktualisieren();
+			$this->TemperaturInfosAktualisieren();
 			$this->BatterieInfosAktualisieren();
 			$this->FunkInfosAktualisieren();
+
 				
 
         }
-		 function GeraeteInfosAktualisieren() {
+		public function GeraeteInfosAktualisieren() {
             // Selbsterstellter Code
 			    $username = $this->ReadPropertyString("Username");
 				$password = $this->ReadPropertyString("Password");
@@ -269,8 +271,36 @@
 				
 
         }
-		
-		
+		public function TemperaturInfosAktualisieren() {
+            // Selbsterstellter Code
+			    $username = $this->ReadPropertyString("Username");
+				$password = $this->ReadPropertyString("Password");
+				//echo ($username);
+				//echo ($password);
+			    $gardena = new gardena($username, $password );
+				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+				
+				  $category_name = "internal_temperature";
+
+  
+    $proberty_name = "temperature";
+    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+   
+    $varID = @$this->GetIDForIdent($proberty_name);
+				if (IPS_VariableExists($varID)) {
+					SetValue($varID, $status);
+			
+
+				}
+				else {
+				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Gerät_Interne_Temperatur");
+				SetValue($VarID_NEU, $status);
+				
+				}
+
+			
+        }
+		 
 		 
 	
     }
