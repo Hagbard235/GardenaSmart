@@ -41,6 +41,8 @@
             // Selbsterstellter Code
 			    $username = $this->ReadPropertyString("Username");
 				$password = $this->ReadPropertyString("Password");
+				echo ($username);
+				echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 				$category_name = "device_info";
