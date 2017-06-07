@@ -9,7 +9,7 @@
     ],
     "actions":
     [
-        { "type": "Button", "label": "Send Message", "onClick": "SMS_Send($id, $Number, $Message);" }
+        { "type": "Button", "label": "Send Message", "onClick": "CheckUsernameUndPassword();" }
     ],
     "status":
     [
