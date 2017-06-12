@@ -51,7 +51,7 @@
 				$interv = $this->ReadPropertyInteger("Interval")*60000;
 				$this->RegisterTimer("Update", $interv, $doThis);
 				$doThis = 'GAR_BatterieInfosAktualisieren($_IPS[\'TARGET\']);';
-				$interv = $this->ReadPropertyInteger("Interval")*60000;
+				$interv = $this->ReadPropertyInteger("IntervalB")*60000;
 				$this->RegisterTimer("UpdateB", $interv, $doThis);
 				
  
