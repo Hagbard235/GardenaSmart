@@ -20,6 +20,7 @@
             $this->RegisterPropertyString("Username", "Mail-Adresse bei Gardena"); 
             $this->RegisterPropertyString("Password", "Password"); 
 			$this->RegisterPropertyInteger("Interval",5); 
+			$this->RegisterPropertyInteger("IntervalB",5); 
 			
 			//Variablenprofil anlegen ($name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon)
 		$profilename = "GAR.Befehle";
