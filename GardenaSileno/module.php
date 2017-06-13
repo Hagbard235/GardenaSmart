@@ -21,6 +21,7 @@
             $this->RegisterPropertyString("Password", "Password"); 
 			$this->RegisterPropertyInteger("Interval",5); 
 			$this->RegisterPropertyInteger("IntervalB",5); 
+			$this->RegisterPropertyInteger("IntervalB",0); 
 			
 			//Variablenprofil anlegen ($name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon)
 		$profilename = "GAR.Befehle";
@@ -54,6 +55,9 @@
 				$doThis = 'GAR_BatterieInfosAktualisieren($_IPS[\'TARGET\']);';
 				$interv = $this->ReadPropertyInteger("IntervalB")*60000;
 				$this->RegisterTimer("UpdateB", $interv, $doThis);
+				$doThis = 'GAR_FunkInfosAktualisieren($_IPS[\'TARGET\']);';
+				$interv = $this->ReadPropertyInteger("IntervalF")*60000;
+				$this->RegisterTimer("UpdateF", $interv, $doThis);
 				
  
         }

@@ -6,7 +6,9 @@
 		{ "type": "Label", "label": "Refresh-Zeit für Status in Minuten" },
         { "type": "IntervalBox", "name": "Interval", "caption": "Minuten" },
 		{ "type": "Label", "label": "Refresh-Zeit für Batterie in Minuten" },
-        { "type": "IntervalBox", "name": "IntervalB", "caption": "Minuten" }
+        { "type": "IntervalBox", "name": "IntervalB", "caption": "Minuten" },
+		{ "type": "Label", "label": "Refresh-Zeit für Funkstatus in Minuten (0=Aus)" },
+        { "type": "IntervalBox", "name": "IntervalF", "caption": "Minuten" }
         
     ],
    // "actions":
