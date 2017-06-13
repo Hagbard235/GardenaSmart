@@ -99,6 +99,8 @@
 			if ($this->ReadPropertyString("Password") !== "Password") {
 			$this->AlleInfosAktualisieren();
 			$this->SetTimerInterval("Update", $this->ReadPropertyInteger("Interval")*60000);
+			$this->SetTimerInterval("UpdateB", $this->ReadPropertyInteger("IntervalB")*60000);
+			$this->SetTimerInterval("UpdateF", $this->ReadPropertyInteger("IntervalF")*60000);
 			}
         }
  
