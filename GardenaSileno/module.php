@@ -227,16 +227,16 @@
 				}
 
     $proberty_name = "last_time_online";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			$datum = new DateTime($status);
+			$datum = new DateTime($status)->format('d/m/Y H:i:s');
 				$varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $datum->format('d/m/Y H:i:s'));
+					SetValue($varID, $datum);
 			
 
 				}
 				else {
 				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_letzte Onlinezeit");
-				SetValue($VarID_NEU, $datum->format('d/m/Y H:i:s'));
+				SetValue($VarID_NEU, $datum);
 				
 				}
 
@@ -441,29 +441,31 @@
 
     $proberty_name = "timestamp_next_start";
     $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+	$datum = new DateTime($status)->format('d/m/Y H:i:s');
     $varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
+					SetValue($varID, $datum);
 			
 
 				}
 				else {
 				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Uhrzeit nächster Start");
-				SetValue($VarID_NEU, $status);
+				SetValue($VarID_NEU, $datum);
 				
 				}
 
     $proberty_name = "override_end_time";
     $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+	$datum = new DateTime($status)->format('d/m/Y H:i:s');
     $varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
+					SetValue($varID, $datum);
 			
 
 				}
 				else {
 				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Überschriebene Endzeit");
-				SetValue($VarID_NEU, $status);
+				SetValue($VarID_NEU, $datum);
 				
 				}
 			
