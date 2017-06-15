@@ -227,7 +227,7 @@
 				}
 
     $proberty_name = "last_time_online";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			$datum = new DateTime($status)
+			$datum = new DateTime($status);
 			$datum_f = $datum->format('d/m/Y H:i:s');
 				$varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
@@ -442,7 +442,7 @@
 
     $proberty_name = "timestamp_next_start";
     $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-	$datum = new DateTime($status)
+	$datum = new DateTime($status);
 			$datum_f = $datum->format('d/m/Y H:i:s');
     $varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
@@ -458,7 +458,7 @@
 
     $proberty_name = "override_end_time";
     $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-	$datum = new DateTime($status)
+	$datum = new DateTime($status);
 			$datum_f = $datum->format('d/m/Y H:i:s');
     $varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
