@@ -25,7 +25,7 @@
 			$this->RegisterPropertyBoolean("Batterie_Status_B",false);
 			$this->RegisterPropertyBoolean("Funk_Qualität_B",false);
 			$this->RegisterPropertyBoolean("Funk_Status_B",false);
-			$this->RegisterPropertyBoolean("Funk_Status_B",false);
+			$this->RegisterPropertyBoolean("Funk_Staerke_B",false);
 			$this->RegisterPropertyBoolean("Gerät_Hersteller_B",false);
 			$this->RegisterPropertyBoolean("Gerät_Interne_Temperatur_B",false);
 			$this->RegisterPropertyBoolean("Gerät_Kategorie_B",false);
