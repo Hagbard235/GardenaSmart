@@ -3,18 +3,15 @@
     [
         { "type": "ValidationTextBox", "name": "Username", "caption": "Username" },
         { "type": "ValidationTextBox", "name": "Password", "caption": "Password" },
-		{ "type": "Label", "label": "Refresh-Zeit für Status in Minuten" },
+		{ "type": "Label", "label": "Refresh-Zeit in Minuten" },
         { "type": "IntervalBox", "name": "Interval", "caption": "Minuten" },
-		{ "type": "Label", "label": "Refresh-Zeit für Batterie in Minuten" },
-        { "type": "IntervalBox", "name": "IntervalB", "caption": "Minuten" },
-		{ "type": "Label", "label": "Refresh-Zeit für Funkstatus in Minuten (0=Aus)" },
-        { "type": "IntervalBox", "name": "IntervalF", "caption": "Minuten" },
 		{ "type": "Label", "label": "Welche Attribute sollten zyklisch aktualisiert werden?" },
 		{ "type": "CheckBox", "name": "Batterie_Ladestatus_B", "caption": "Batterie_Ladestatus" },
 		{ "type": "CheckBox", "name": "Batterie_Level_B", "caption": "Batterie_Level" },
 		{ "type": "CheckBox", "name": "Batterie_Status_B", "caption": "Batterie_Status" },
 		{ "type": "CheckBox", "name": "Funk_Qualität_B", "caption": "Funk_Qualität" },
 		{ "type": "CheckBox", "name": "Funk_Status_B", "caption": "Funk_Status" },
+		{ "type": "CheckBox", "name": "Funk_Staerke_B", "caption": "Funk_Staerke" },
 		{ "type": "CheckBox", "name": "Gerät_Hersteller_B", "caption": "Gerät_Hersteller" },	
 		{ "type": "CheckBox", "name": "Gerät_Interne_Temperatur_B", "caption": "Gerät_Interne_Temperatur" },
 		{ "type": "CheckBox", "name": "Gerät_Kategorie_B", "caption": "Gerät_Kategorie" },
@@ -27,6 +24,7 @@
 		{ "type": "CheckBox", "name": "Status_manuelle_Operation_B", "caption": "Status_manuelle Operation" },
 		{ "type": "CheckBox", "name": "Status_Uhrzeit_naechster_Start_B", "caption": "Status_Uhrzeit nächster Start" },
 		{ "type": "CheckBox", "name": "Status_Ueberschriebene_Endzeit_B", "caption": "Status_Überschriebene Endzeit" },
+		{ "type": "CheckBox", "name": "Status_Grund_B", "caption": "Status_Grund" }
         
     ],
    // "actions":

@@ -20,8 +20,26 @@
             $this->RegisterPropertyString("Username", "Mail-Adresse bei Gardena"); 
             $this->RegisterPropertyString("Password", "Password"); 
 			$this->RegisterPropertyInteger("Interval",5); 
-			$this->RegisterPropertyInteger("IntervalB",5); 
-			$this->RegisterPropertyInteger("IntervalF",0); 
+			$this->RegisterPropertyBoolean("Batterie_Ladestatus_B",false);
+			$this->RegisterPropertyBoolean("Batterie_Level_B",false);
+			$this->RegisterPropertyBoolean("Batterie_Status_B",false);
+			$this->RegisterPropertyBoolean("Funk_Qualität_B",false);
+			$this->RegisterPropertyBoolean("Funk_Status_B",false);
+			$this->RegisterPropertyBoolean("Funk_Status_B",false);
+			$this->RegisterPropertyBoolean("Gerät_Hersteller_B",false);
+			$this->RegisterPropertyBoolean("Gerät_Interne_Temperatur_B",false);
+			$this->RegisterPropertyBoolean("Gerät_Kategorie_B",false);
+			$this->RegisterPropertyBoolean("Gerät_letzte_Onlinezeit_B",false);
+			$this->RegisterPropertyBoolean("Gerät_Produktname_B",false);
+			$this->RegisterPropertyBoolean("Gerät_Serien_Nummer_B",false);
+			$this->RegisterPropertyBoolean("Gerät_sgtin_B",false);
+			$this->RegisterPropertyBoolean("Gerät_Version_B",false);
+			$this->RegisterPropertyBoolean("Status_aktuelle_Aktion_B",false);
+			$this->RegisterPropertyBoolean("Status_manuelle_Operation_B",false);
+			$this->RegisterPropertyBoolean("Status_Uhrzeit_naechster_Start_B",false);
+			$this->RegisterPropertyBoolean("Status_Ueberschriebene_Endzeit_B",false);
+			$this->RegisterPropertyBoolean("Status_Grund_B",false);
+			
 			
 			//Variablenprofil anlegen ($name, $ProfileType, $Suffix, $MinValue, $MaxValue, $StepSize, $Digits, $Icon)
 		$profilename = "GAR.Befehle";
@@ -49,15 +67,9 @@
 				
 				
 				}
-				$doThis = 'GAR_AktuellerGeraeteStatusAktualisieren($_IPS[\'TARGET\']);';
+				$doThis = 'GAR_gewaehlteAktualisieren($_IPS[\'TARGET\']);';
 				$interv = $this->ReadPropertyInteger("Interval")*60000;
 				$this->RegisterTimer("Update", $interv, $doThis);
-				$doThis = 'GAR_BatterieInfosAktualisieren($_IPS[\'TARGET\']);';
-				$interv = $this->ReadPropertyInteger("IntervalB")*60000;
-				$this->RegisterTimer("UpdateB", $interv, $doThis);
-				$doThis = 'GAR_FunkInfosAktualisieren($_IPS[\'TARGET\']);';
-				$interv = $this->ReadPropertyInteger("IntervalF")*60000;
-				$this->RegisterTimer("UpdateF", $interv, $doThis);
 				
  
         }
@@ -99,8 +111,6 @@
 			if ($this->ReadPropertyString("Password") !== "Password") {
 			$this->AlleInfosAktualisieren();
 			$this->SetTimerInterval("Update", $this->ReadPropertyInteger("Interval")*60000);
-			$this->SetTimerInterval("UpdateB", $this->ReadPropertyInteger("IntervalB")*60000);
-			$this->SetTimerInterval("UpdateF", $this->ReadPropertyInteger("IntervalF")*60000);
 			}
         }
  
@@ -116,6 +126,82 @@
 			$this->AktuellerGeraeteStatusAktualisieren();
 			$this->BatterieInfosAktualisieren();
 			$this->FunkInfosAktualisieren();
+
+				
+
+        }
+		
+		public function getWert($category_name, $proberty_name , $property, $typ, $check) {
+			if ($check || $this->ReadPropertyBoolean($property) ) {
+				
+					
+						$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
+					
+						$varID = @$this->GetIDForIdent($proberty_name);
+						if (IPS_VariableExists($varID)) {
+							if ($typ == "Date") {
+						$datum = new DateTime($status);
+						$datum_f = $datum->format('d/m/Y H:i:s');
+						$status = $datum_f;
+							}
+							SetValue($varID, $status);
+					
+
+						}
+						else {
+							if ($typ == "String") {
+						$VarID_NEU = $this->RegisterVariableString($proberty_name,substr($property,0,-2));
+							}
+								if ($typ == "Integer") {
+						$VarID_NEU = $this->RegisterVariableInteger($proberty_name,substr($property,0,-2));
+							}
+							if ($typ == "Boolean") {
+						$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,substr($property,0,-2));
+							}
+							if ($typ == "Date") {
+						$VarID_NEU = $this->RegisterVariableString($proberty_name,substr($property,0,-2));
+						$datum = new DateTime($status);
+						$datum_f = $datum->format('d/m/Y H:i:s');
+						$status = $datum_f;
+							}
+						SetValue($VarID_NEU, $status);
+						
+						}
+				
+			}
+		}
+		public function gewaehlteAktualisieren() {
+			 $username = $this->ReadPropertyString("Username");
+				$password = $this->ReadPropertyString("Password");
+				//echo ($username);
+				//echo ($password);
+			    $gardena = new gardena($username, $password );
+				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
+				
+				/// HIER Device Infos
+				getWert("device_info", "manufacturer","Geraet_Hersteller_B", "String", true );
+				getWert("device_info", "product","Geraet_Produktname_B", "String", true );
+				getWert("device_info", "serial_number","Geraet_Serien_Nummer_B", "String" , true);
+				getWert("device_info", "version","Geraet_Version_B", "String", true );
+				getWert("device_info", "sgtin","Geraet_sgtin_B", "String", true );
+				getWert("device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , true);
+				getWert("device_info", "category","Geraet_Kategorie_B", "String", true );
+				getWert("internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", true );
+				getWert("battery", "level","Batterie_Level_B", "Integer", true );
+				getWert("battery", "rechargable_battery_status","Batterie_Status_B", "String", true );
+				getWert("battery", "charging","Batterie_Ladestatus_B", "Boolean", true );
+				getWert("radio", "quality","Funk_Staerke_B", "Integer", true );
+				getWert("radio", "state","Funk_Qualität_B", "String" , true);
+				getWert("radio", "connection_status","Funk_Status_B", "String" , true);
+				getWert("mower", "manual_operation","Status_manuelle_Operation_B", "String" , true);
+				getWert("mower", "timestamp_next_start","Status_Uhrzeit_naechster_Start_B", "Date" , true);
+				getWert("mower", "override_end_time","Status_Ueberschriebene_Endzeit_B", "Date", true );
+				getWert("mower", "status","Status_aktuelle_Aktion_B", "String", true );
+				getWert("mower", "source_for_next_start","Status_Grund_B", "String" , true);
+				
+				
+				   
+
 
 				
 
@@ -152,108 +238,14 @@
 				//echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
-				$category_name = "device_info";
-				$proberty_name = "manufacturer";
-				$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			
-				$varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Hersteller");
-				SetValue($VarID_NEU, $status);
-				
-				}
-				
-				
-
-    $proberty_name = "product";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			
-				$varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Produktname");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "serial_number";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			
-				$varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Serien-Nummer");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "version";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			
-				$varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Version");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "category";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			
-				$varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_Kategorie");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "last_time_online";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			
-				$varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_letzte Onlinezeit");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "sgtin";$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-			
-				$varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Gerät_sgtin");
-				SetValue($VarID_NEU, $status);
-				
-				}
-				
+				getWert("device_info", "manufacturer","Geraet_Hersteller_B", "String", false );
+				getWert("device_info", "product","Geraet_Produktname_B", "String", false );
+				getWert("device_info", "serial_number","Geraet_Serien_Nummer_B", "String" , false);
+				getWert("device_info", "version","Geraet_Version_B", "String", false );
+				getWert("device_info", "sgtin","Geraet_sgtin_B", "String", false );
+				getWert("device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , false);
+				getWert("device_info", "category","Geraet_Kategorie_B", "String", false );
+				getWert("internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", false );
 				
 
         }
@@ -267,50 +259,9 @@
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 				
-				
-				$category_name = "battery";
-				
-  $proberty_name = "level";$varID = @$this->GetIDForIdent($proberty_name);
-   $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Batterie_Level");
-				 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-				
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "rechargable_battery_status";$varID = @$this->GetIDForIdent($proberty_name);
-	 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Batterie_Status");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "charging";$varID = @$this->GetIDForIdent($proberty_name);
-	 $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,"Batterie_Ladestatus");
-				SetValue($VarID_NEU, $status);
-				
-				}
-				   
+				getWert("battery", "level","Batterie_Level_B", "Integer", false );
+				getWert("battery", "rechargable_battery_status","Batterie_Status_B", "String", false );
+				getWert("battery", "charging","Batterie_Ladestatus_B", "Boolean", false );
 				
 
         }
@@ -322,50 +273,9 @@
 				//echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
-				
-				   $category_name = "radio";
-				   
-				 $proberty_name = "quality";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Funk_Stärke");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "connection_status";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Funk_Status");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "state";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Funk_Qualität");
-				SetValue($VarID_NEU, $status);
-				
-				}
+				getWert("radio", "quality","Funk_Staerke_B", "Integer", false );
+				getWert("radio", "state","Funk_Qualität_B", "String" , false);
+				getWert("radio", "connection_status","Funk_Status_B", "String" , false);
 				
 
         }
@@ -377,97 +287,16 @@
 				//echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
-				
-				  $category_name = "internal_temperature";
+				getWert("device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , false);
+				getWert("mower", "manual_operation","Status_manuelle_Operation_B", "String" , false);
+				getWert("mower", "timestamp_next_start","Status_Uhrzeit_naechster_Start_B", "Date" , false);
+				getWert("mower", "override_end_time","Status_Ueberschriebene_Endzeit_B", "Date", false );
+				getWert("mower", "status","Status_aktuelle_Aktion_B", "String", false );
+				getWert("mower", "source_for_next_start","Status_Grund_B", "String" , false);
+  				getWert("internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", false );
 
-  
-    $proberty_name = "temperature";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-   
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableInteger($proberty_name,"Gerät_Interne_Temperatur");
-				SetValue($VarID_NEU, $status);
-				
-				}
-  $category_name = "mower";
-				
-				$proberty_name = "manual_operation";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_manuelle Operation");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "status";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_aktuelle Aktion");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "source_for_next_start";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Grund für nächsten Start");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "timestamp_next_start";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Uhrzeit nächster Start");
-				SetValue($VarID_NEU, $status);
-				
-				}
-
-    $proberty_name = "override_end_time";
-    $status = $gardena -> getInfo($mower, $category_name, $proberty_name);
-    $varID = @$this->GetIDForIdent($proberty_name);
-				if (IPS_VariableExists($varID)) {
-					SetValue($varID, $status);
-			
-
-				}
-				else {
-				$VarID_NEU = $this->RegisterVariableString($proberty_name,"Status_Überschriebene Endzeit");
-				SetValue($VarID_NEU, $status);
-				
-				}
-			
-        }
+		}
+		
 			public function AktionAusfuehren($action) {
       
 	$gardena = new gardena($pw_user_maeher, $pw_pawo_maeher);
