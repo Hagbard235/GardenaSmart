@@ -132,7 +132,7 @@
         }
 		
 		public function getWert($gardena, $mower, $category_name, $proberty_name , $property, $typ, $check) {
-			if ($check || $this->ReadPropertyBoolean($property) ) {
+			if (!$check || $this->ReadPropertyBoolean($property) ) {
 				
 					
 						$status = $gardena -> getInfo($mower, $category_name, $proberty_name);
