@@ -23,7 +23,7 @@
 			$this->RegisterPropertyBoolean("Batterie_Ladestatus_B",false);
 			$this->RegisterPropertyBoolean("Batterie_Level_B",false);
 			$this->RegisterPropertyBoolean("Batterie_Status_B",false);
-			$this->RegisterPropertyBoolean("Funk_Qualität_B",false);
+			$this->RegisterPropertyBoolean("Funk_Qualitaet_B",false);
 			$this->RegisterPropertyBoolean("Funk_Status_B",false);
 			$this->RegisterPropertyBoolean("Funk_Staerke_B",false);
 			$this->RegisterPropertyBoolean("Geraet_Hersteller_B",false);
