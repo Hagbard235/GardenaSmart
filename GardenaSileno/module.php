@@ -131,7 +131,7 @@
 
         }
 		
-		public function getWert($category_name, $proberty_name , $property, $typ, $check) {
+		public function getWert($gardena, $mower, $category_name, $proberty_name , $property, $typ, $check) {
 			if ($check || $this->ReadPropertyBoolean($property) ) {
 				
 					
@@ -179,25 +179,25 @@
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 				
 				/// HIER Device Infos
-				$this->getWert("device_info", "manufacturer","Geraet_Hersteller_B", "String", true );
-				$this->getWert("device_info", "product","Geraet_Produktname_B", "String", true );
-				$this->getWert("device_info", "serial_number","Geraet_Serien_Nummer_B", "String" , true);
-				$this->getWert("device_info", "version","Geraet_Version_B", "String", true );
-				$this->getWert("device_info", "sgtin","Geraet_sgtin_B", "String", true );
-				$this->getWert("device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , true);
-				$this->getWert("device_info", "category","Geraet_Kategorie_B", "String", true );
-				$this->getWert("internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", true );
-				$this->getWert("battery", "level","Batterie_Level_B", "Integer", true );
-				$this->getWert("battery", "rechargable_battery_status","Batterie_Status_B", "String", true );
-				$this->getWert("battery", "charging","Batterie_Ladestatus_B", "Boolean", true );
-				$this->getWert("radio", "quality","Funk_Staerke_B", "Integer", true );
-				$this->getWert("radio", "state","Funk_Qualität_B", "String" , true);
-				$this->getWert("radio", "connection_status","Funk_Status_B", "String" , true);
-				$this->getWert("mower", "manual_operation","Status_manuelle_Operation_B", "String" , true);
-				$this->getWert("mower", "timestamp_next_start","Status_Uhrzeit_naechster_Start_B", "Date" , true);
-				$this->getWert("mower", "override_end_time","Status_Ueberschriebene_Endzeit_B", "Date", true );
-				$this->getWert("mower", "status","Status_aktuelle_Aktion_B", "String", true );
-				$this->getWert("mower", "source_for_next_start","Status_Grund_B", "String" , true);
+				$this->getWert($gardena, $mower,$gardena, $mower,"device_info", "manufacturer","Geraet_Hersteller_B", "String", true );
+				$this->getWert($gardena, $mower,$gardena, $mower,"device_info", "product","Geraet_Produktname_B", "String", true );
+				$this->getWert($gardena, $mower,"device_info", "serial_number","Geraet_Serien_Nummer_B", "String" , true);
+				$this->getWert($gardena, $mower,"device_info", "version","Geraet_Version_B", "String", true );
+				$this->getWert($gardena, $mower,"device_info", "sgtin","Geraet_sgtin_B", "String", true );
+				$this->getWert($gardena, $mower,"device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , true);
+				$this->getWert($gardena, $mower,"device_info", "category","Geraet_Kategorie_B", "String", true );
+				$this->getWert($gardena, $mower,"internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", true );
+				$this->getWert($gardena, $mower,"battery", "level","Batterie_Level_B", "Integer", true );
+				$this->getWert($gardena, $mower,"battery", "rechargable_battery_status","Batterie_Status_B", "String", true );
+				$this->getWert($gardena, $mower,"battery", "charging","Batterie_Ladestatus_B", "Boolean", true );
+				$this->getWert($gardena, $mower,"radio", "quality","Funk_Staerke_B", "Integer", true );
+				$this->getWert($gardena, $mower,"radio", "state","Funk_Qualität_B", "String" , true);
+				$this->getWert($gardena, $mower,"radio", "connection_status","Funk_Status_B", "String" , true);
+				$this->getWert($gardena, $mower,"mower", "manual_operation","Status_manuelle_Operation_B", "String" , true);
+				$this->getWert($gardena, $mower,"mower", "timestamp_next_start","Status_Uhrzeit_naechster_Start_B", "Date" , true);
+				$this->getWert($gardena, $mower,"mower", "override_end_time","Status_Ueberschriebene_Endzeit_B", "Date", true );
+				$this->getWert($gardena, $mower,"mower", "status","Status_aktuelle_Aktion_B", "String", true );
+				$this->getWert($gardena, $mower,"mower", "source_for_next_start","Status_Grund_B", "String" , true);
 				
 				
 				   
@@ -238,14 +238,14 @@
 				//echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
-				$this->getWert("device_info", "manufacturer","Geraet_Hersteller_B", "String", false );
-				$this->getWert("device_info", "product","Geraet_Produktname_B", "String", false );
-				$this->getWert("device_info", "serial_number","Geraet_Serien_Nummer_B", "String" , false);
-				$this->getWert("device_info", "version","Geraet_Version_B", "String", false );
-				$this->getWert("device_info", "sgtin","Geraet_sgtin_B", "String", false );
-				$this->getWert("device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , false);
-				$this->getWert("device_info", "category","Geraet_Kategorie_B", "String", false );
-				$this->getWert("internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", false );
+				$this->getWert($gardena, $mower,"device_info", "manufacturer","Geraet_Hersteller_B", "String", false );
+				$this->getWert($gardena, $mower,"device_info", "product","Geraet_Produktname_B", "String", false );
+				$this->getWert($gardena, $mower,"device_info", "serial_number","Geraet_Serien_Nummer_B", "String" , false);
+				$this->getWert($gardena, $mower,"device_info", "version","Geraet_Version_B", "String", false );
+				$this->getWert($gardena, $mower,"device_info", "sgtin","Geraet_sgtin_B", "String", false );
+				$this->getWert($gardena, $mower,"device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , false);
+				$this->getWert($gardena, $mower,"device_info", "category","Geraet_Kategorie_B", "String", false );
+				$this->getWert($gardena, $mower,"internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", false );
 				
 
         }
@@ -259,9 +259,9 @@
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 				
-				$this->getWert("battery", "level","Batterie_Level_B", "Integer", false );
-				$this->getWert("battery", "rechargable_battery_status","Batterie_Status_B", "String", false );
-				$this->getWert("battery", "charging","Batterie_Ladestatus_B", "Boolean", false );
+				$this->getWert($gardena, $mower,"battery", "level","Batterie_Level_B", "Integer", false );
+				$this->getWert($gardena, $mower,"battery", "rechargable_battery_status","Batterie_Status_B", "String", false );
+				$this->getWert($gardena, $mower,"battery", "charging","Batterie_Ladestatus_B", "Boolean", false );
 				
 
         }
@@ -273,9 +273,9 @@
 				//echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
-				$this->getWert("radio", "quality","Funk_Staerke_B", "Integer", false );
-				$this->getWert("radio", "state","Funk_Qualität_B", "String" , false);
-				$this->getWert("radio", "connection_status","Funk_Status_B", "String" , false);
+				$this->getWert($gardena, $mower,"radio", "quality","Funk_Staerke_B", "Integer", false );
+				$this->getWert($gardena, $mower,"radio", "state","Funk_Qualität_B", "String" , false);
+				$this->getWert($gardena, $mower,"radio", "connection_status","Funk_Status_B", "String" , false);
 				
 
         }
@@ -287,13 +287,13 @@
 				//echo ($password);
 			    $gardena = new gardena($username, $password );
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
-				$this->getWert("device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , false);
-				$this->getWert("mower", "manual_operation","Status_manuelle_Operation_B", "String" , false);
-				$this->getWert("mower", "timestamp_next_start","Status_Uhrzeit_naechster_Start_B", "Date" , false);
-				$this->getWert("mower", "override_end_time","Status_Ueberschriebene_Endzeit_B", "Date", false );
-				$this->getWert("mower", "status","Status_aktuelle_Aktion_B", "String", false );
-				$this->getWert("mower", "source_for_next_start","Status_Grund_B", "String" , false);
-  				$this->getWert("internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", false );
+				$this->getWert($gardena, $mower,"device_info", "last_time_online","Geraet_letzte_Onlinezeit_B", "Date" , false);
+				$this->getWert($gardena, $mower,"mower", "manual_operation","Status_manuelle_Operation_B", "String" , false);
+				$this->getWert($gardena, $mower,"mower", "timestamp_next_start","Status_Uhrzeit_naechster_Start_B", "Date" , false);
+				$this->getWert($gardena, $mower,"mower", "override_end_time","Status_Ueberschriebene_Endzeit_B", "Date", false );
+				$this->getWert($gardena, $mower,"mower", "status","Status_aktuelle_Aktion_B", "String", false );
+				$this->getWert($gardena, $mower,"mower", "source_for_next_start","Status_Grund_B", "String" , false);
+  				$this->getWert($gardena, $mower,"internal_temperature", "temperature","Gerät_Interne_Temperatur_B", "Integer", false );
 
 		}
 		
