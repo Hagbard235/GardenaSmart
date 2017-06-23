@@ -141,6 +141,7 @@
 						if (IPS_VariableExists($varID)) {
 							if ($typ == "Date") {
 						$datum = new DateTime($status);
+						$datum->setTimezone(new DateTimeZone(date_default_timezone_get()));
 						$datum_f = $datum->format('d/m/Y H:i:s');
 						$status = $datum_f;
 							}
