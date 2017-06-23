@@ -171,7 +171,7 @@
 							}
 							if ($typ == "Boolean") {
 								if ($proberty_name == "charging"){
-						$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,substr($property,0,-2), "VIR.Ladestatus");
+						$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,substr($property,0,-2), "GAR.Ladestatus");
 								} else {
 						$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,substr($property,0,-2));
 									
