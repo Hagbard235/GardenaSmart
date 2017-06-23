@@ -53,6 +53,19 @@
 			IPS_SetVariableProfileAssociation($profilename, 5, "Start für 3 Tage", "", 0xFFFF00);
 			
 		}
+		
+		$profilename = "GAR.Ladestatus";
+		if (IPS_VariableProfileExists($profilename)) {
+			IPS_DeleteVariableProfile ($profilename ) ;
+		}
+        if (!IPS_VariableProfileExists($profilename)) {
+            IPS_CreateVariableProfile($profilename, 0);
+            IPS_SetVariableProfileIcon($profilename, "Power");
+            IPS_SetVariableProfileAssociation($profilename, true, "Lädt", "", 0xEA1A07);
+            IPS_SetVariableProfileAssociation($profilename, false, "Lädt nicht", "", 0x62F442);
+            //IPS_SetVariableProfileAssociation($profilename, 1, "gedimmt", "", 0xFFFF00);
+            
+        }
 				$proberty_name = "action";
 				$varID = @$this->GetIDForIdent($proberty_name);
 				if (IPS_VariableExists($varID)) {
@@ -157,7 +170,12 @@
 						$VarID_NEU = $this->RegisterVariableInteger($proberty_name,substr($property,0,-2));
 							}
 							if ($typ == "Boolean") {
+								if ($property == "charging"){
+						$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,substr($property,0,-2), "VIR.Ladestatus");
+								} else {
 						$VarID_NEU = $this->RegisterVariableBoolean($proberty_name,substr($property,0,-2));
+									
+								}
 							}
 							if ($typ == "Date") {
 						$VarID_NEU = $this->RegisterVariableString($proberty_name,substr($property,0,-2));
