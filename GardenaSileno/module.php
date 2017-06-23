@@ -161,6 +161,7 @@
 							if ($typ == "Date") {
 						$VarID_NEU = $this->RegisterVariableString($proberty_name,substr($property,0,-2));
 						$datum = new DateTime($status);
+						$datum->setTimezone(new DateTimeZone(date_default_timezone_get()));
 						$datum_f = $datum->format('d/m/Y H:i:s');
 						$status = $datum_f;
 							}
