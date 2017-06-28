@@ -199,8 +199,8 @@
 				$mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 				
 				/// HIER Device Infos
-				$this->getWert($gardena, $mower,$gardena, $mower,"device_info", "manufacturer","Geraet_Hersteller_B", "String", true );
-				$this->getWert($gardena, $mower,$gardena, $mower,"device_info", "product","Geraet_Produktname_B", "String", true );
+				$this->getWert($gardena, $mower,"device_info", "manufacturer","Geraet_Hersteller_B", "String", true );
+				$this->getWert($gardena, $mower,"device_info", "product","Geraet_Produktname_B", "String", true );
 				$this->getWert($gardena, $mower,"device_info", "serial_number","Geraet_Serien_Nummer_B", "String" , true);
 				$this->getWert($gardena, $mower,"device_info", "version","Geraet_Version_B", "String", true );
 				$this->getWert($gardena, $mower,"device_info", "sgtin","Geraet_sgtin_B", "String", true );
