@@ -319,7 +319,9 @@
 		
 			public function AktionAusfuehren($action) {
       
-	$gardena = new gardena($pw_user_maeher, $pw_pawo_maeher);
+	   $username = $this->ReadPropertyString("Username");
+				$password = $this->ReadPropertyString("Password");
+	$gardena = new gardena($username, $password);
     $mower = $gardena -> getFirstDeviceOfCategory($gardena::CATEGORY_MOWER);
 
     
