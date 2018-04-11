@@ -36,7 +36,7 @@ class gardena
     // Mover Temperatur
     const CATEGORY_TEMPERATUR        = "internal_temperature";
 // -----------------------------------------------------------------------------
-    function gardena($user, $pw)
+    function __construct($user, $pw)
     {
         $data = array(
             "sessions" => array(
