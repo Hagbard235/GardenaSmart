@@ -51,6 +51,7 @@
 			IPS_SetVariableProfileAssociation($profilename, 3, "Start/Wiederaufname Timer", "", 0xFFFF00);
 			IPS_SetVariableProfileAssociation($profilename, 4, "Start für 24 Stunden", "", 0xFFFF00);
 			IPS_SetVariableProfileAssociation($profilename, 5, "Start für 3 Tage", "", 0xFFFF00);
+			IPS_SetVariableProfileAssociation($profilename, 6, "Start für 2 Stunden", "", 0xFFFF00);
 			
 		}
 		
@@ -347,6 +348,9 @@
             case 5:
                 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_3DAYS);
                 break;
+            case 6:
+                $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_2HOURS);
+                break;			    
             }
         
 			}		

@@ -20,6 +20,8 @@ class gardena
     var $CMD_MOWER_START_RESUME_SCHEDULE        = array("name" => "start_resume_schedule");
     var $CMD_MOWER_START_24HOURS                = array("name" => "start_override_timer", "parameters" => array("duration" => 1440));
     var $CMD_MOWER_START_3DAYS                    = array("name" => "start_override_timer", "parameters" => array("duration" => 4320));
+    var $CMD_MOWER_START_2HOURS                    = array("name" => "start_override_timer", "parameters" => array("duration" => 2));
+
 // -----------------------------------------------------------------------------
     // Gateway
     const CATEGORY_DEVICE_INFO        = "device_info";
@@ -30,7 +32,7 @@ class gardena
     const CATEGORY_BATTERY            = "battery";
     // Mover Radio - Funksignal
     const CATEGORY_RADIO            = "radio";
-    // Mover Mäherstatus
+    // Mover MÃ¤herstatus
     const CATEGORY_MOWER            = "mower";
     const PROPERTY_STATUS            = "status";
     // Mover Temperatur
