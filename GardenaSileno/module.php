@@ -110,6 +110,9 @@
 			case "5":
 				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_3DAYS);
 				break;
+			case "6":
+				 $gardena -> sendCommand($mower, $gardena -> CMD_MOWER_START_2HOURS);
+				break;	
 			default:
 				throw new Exception("Invalid action");
 		}
