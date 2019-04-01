@@ -20,7 +20,7 @@ class gardena
     var $CMD_MOWER_START_RESUME_SCHEDULE        = array("name" => "start_resume_schedule");
     var $CMD_MOWER_START_24HOURS                = array("name" => "start_override_timer", "parameters" => array("duration" => 1440));
     var $CMD_MOWER_START_3DAYS                    = array("name" => "start_override_timer", "parameters" => array("duration" => 4320));
-    var $CMD_MOWER_START_2HOURS                    = array("name" => "start_override_timer", "parameters" => array("duration" => 2));
+    var $CMD_MOWER_START_2HOURS                    = array("name" => "start_override_timer", "parameters" => array("duration" => 240));
 
 // -----------------------------------------------------------------------------
     // Gateway
