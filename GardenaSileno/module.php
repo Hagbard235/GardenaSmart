@@ -46,6 +46,7 @@
 		if (!IPS_VariableProfileExists($profilename)) {
 			IPS_CreateVariableProfile($profilename, 1);
 			IPS_SetVariableProfileIcon($profilename, "Flower");
+			IPS_SetVariableProfileAssociation($profilename, 0, "aktueller Status unbekannt", "", 0xFFFF00);
 			IPS_SetVariableProfileAssociation($profilename, 1, "bis auf weiteres parken", "", 0xFFFF00);
 			IPS_SetVariableProfileAssociation($profilename, 2, "parken bis zum nächsten Timer", "", 0xFFFF00);
 			IPS_SetVariableProfileAssociation($profilename, 3, "Start/Wiederaufname Timer", "", 0xFFFF00);
