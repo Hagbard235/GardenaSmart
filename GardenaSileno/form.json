@@ -27,10 +27,7 @@
 		{ "type": "CheckBox", "name": "Status_Grund_B", "caption": "Status_Grund" }
         
     ],
-   // "actions":
-    //[
-    //    { "type": "Button", "label": "Verbindung testen", "onClick": "GAR_CheckUsernameUndPassword($_IPS[\'TARGET\']);" }
-    //],
+   
     "status":
     [
         { "code": 102, "icon": "active", "caption": "Login information valid" },
